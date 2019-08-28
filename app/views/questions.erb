@@ -1,0 +1,12 @@
+<h1>Post A New Question</h1>
+<form action="/questions" method="post">
+	<select name="question[category]">
+	<option value="General">General</option>
+	<option value="History">History</option>
+	<option value="Entertainment">Entertainment</option>
+	<option value="Programming">Programming</option>
+	</select>
+	<br>
+	<textarea name="question[content]" cols="40" rows="10"></textarea><br>
+	<input type="submit" name="Submit">
+</form>

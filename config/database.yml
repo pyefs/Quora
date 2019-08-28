@@ -1,0 +1,11 @@
+# PostgreSQL. Versions 9.1 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+
+development:
+  <<: *default
+  database: questions

@@ -1,0 +1,8 @@
+<h1>Questions</h1>
+<ul>
+<% @questions.each do |question| %>
+<% id = question.id %>
+<li>[<%= question.category %>] - <%= question.content %> <a href="/delete?id=<%= id %>">Delete</a></li>
+<% end %>
+</ul>
+<a href="/questions"><button type="submit" name="Submit">Post A New Question</button></a>

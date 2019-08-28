@@ -4,7 +4,6 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
   	@questions = Questions.all
-
     erb :index
   end
 
@@ -22,10 +21,9 @@ class ApplicationController < Sinatra::Base
   	end
   end
 
-
   get '/delete' do
   	@qs = Questions.find(params[:id])
-  	@qd = @qs.destroy
+  	@qs.destroy
   	redirect to('/')
   end
 end

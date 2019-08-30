@@ -1,0 +1,22 @@
+<br>
+<h4>Search Result for '<%= session['key'] %>':</h4>
+<div class="bg-dark"><font color="gold">   [ QUESTIONS ] </font></div>
+<% Questions.find_each do |q| %>
+  <% if q.content.downcase.include?(session['key'].downcase) || q.title.downcase.include?(session['key'].downcase) || q.category.downcase.include?(session['key'].downcase) %>
+    <b>[ID]     <%= q.title %></b><br>
+    [#<%= q.id %>]     <%= q.content[0,60] %><% if q.content.length >= 60 %>...<% end %>
+    (<u><i><%= q.category %></i></u>)
+    <a href="/view?id=<%= q.id %>"><button class="button" type="submit">View</button></a><br><br>
+  <% end %>
+<% end %>
+<br>
+<div class="bg-dark"><font color="gold">   [ ANSWERS ] </font> </div>
+<% Ans.find_each do |q| %>
+ <% if q.content.downcase.include?(session['key'].downcase) %>
+  <% @rr = Questions.find(q.id) %>
+    <b>[ID]     <%= @rr.title %></b><br>
+    [#<%= q.id %>]     <%= q.content[0,60] %><% if q.content.length >= 60 %>...<% end %>
+    <a href="/view?id=<%= q.id %>"><button class="button" type="submit">View</button></a><br>
+  <% end %>
+<% end %>
+<br><br>

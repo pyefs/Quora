@@ -1,0 +1,35 @@
+<br>
+<div class="pye2 bg-dark">
+  <%= @qs.title.upcase %>
+  <br>
+  <div class="pye4">Posted on <u><%= @qs.created_at %></u> under "<u><%= @qs.category %></u>".
+    <% if @qs.created_at != @qs.updated_at %>
+    Last edit: <u><%= @qs.updated_at %></u>
+    <% end %>
+  </div>
+  <div class="pye">"<%= @qs.content %>"</div>
+  <a href="/edit?cat=question&id=<%= @id %>"><button class="button1 bg-dark" type="submit" name="Edit Question">Edit Question</button></a>
+  <% if Ans.find_by(id: @id) == nil %>
+  <a href="/delete?cat=Questions&id=<%= @id %>"><button class="button1 bg-dark" type="submit" name="Delete Question">Delete Question</button></a>
+  <% end %>
+</div>
+<br>
+<div class="pye2 bg-dark">
+  ANSWER
+  <% if Ans.find_by(id: @id) == nil %>
+  <br><i>No answer yet.</i><br>
+  <a href="/answer?id=<%= @id %>"><button class="button1 bg-dark" type="submit" name="postans">Post An Answer</button></a>
+  <% else %>
+  <% @answer = Ans.find_by(id: @id) %>
+  <div class="pye4">Posted on <u><%= @qs.created_at %>.</u>
+    <% if @answer.created_at != @answer.updated_at %>
+    Last edit: <u><%= @answer.updated_at %></u>
+    <% end %>
+  </div>
+  <div class="pye"><%= @answer.content %></div>
+  <br>
+  <a href="/edit?cat=ans&id=<%= @id %>"><button class="button1 bg-dark" type="submit" name="Edit Answer">Edit Answer</button></a>
+  <a href="/delete?cat=Ans&id=<%= @id %>"><button class="button1 bg-dark" type="submit" name="Delete Answer">Delete Answer</button></a>
+  <% end %>
+</div>
+<br><br>

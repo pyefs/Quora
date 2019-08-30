@@ -1,0 +1,18 @@
+<br>
+<% Questions.new.catz.each do |h| %>
+  <% if Questions.find_by(category: h) != nil %>
+  <div class="bg-dark"><font color="gold"> [ Category: <%= h %> ] </font></div>
+  <% end %>
+  <% Questions.find_each do |q| %>
+    <% if q.category == h %>
+      <b>[ID]     <%= q.title %></b><br>
+      [#<%= q.id %>]     <%= q.content[0,60] %><% if q.content.length >= 60 %>...<% end %>
+      <% if Ans.find_by(id: q.id) != nil %>
+        <font color="red"><b>√</b></font>
+      <% end %>
+      <a href="/view?id=<%= q.id %>"><button class="button" type="submit">View</button></a><br>
+      <br>
+    <% end %>
+  <% end %>
+<% end %>
+<br><br>

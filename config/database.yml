@@ -9,3 +9,4 @@ default: &default
 development:
   <<: *default
   database: questions
+  database: answ

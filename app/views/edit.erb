@@ -5,36 +5,36 @@
 		<br>
 	</div>
 	<div class="pye6">
-	<% if @cat == "question" %>
-	<form action="/edit" method="post">
-		<select name="question[category]">
-			<% Questions.new.catz.each do |c| %>
-			<% if @gg.category == c %>
-			<option value="<%= c %>" selected="true"><%= c %></option>
-			<% else %>
-			<option value="<%= c %>"><%= c %></option>
-			<% end %>
-			<% end %>
-		</select>
+		<% if @cat == "question" %>
+		<form action="/edit" method="post">
+			<select name="question[category]">
+				<% Questions.new.catz.each do |c| %>
+				<% if @gg.category == c %>
+				<option value="<%= c %>" selected="true"><%= c %></option>
+				<% else %>
+				<option value="<%= c %>"><%= c %></option>
+				<% end %>
+				<% end %>
+			</select>
+			<br>
+			<textarea class="txtarea" cols="40" rows="3" maxlength="100" name="question[title]"><%= @gg.title %></textarea>
+			<br>
+			<textarea class="txtarea" cols="40" rows="10" name="question[content]"><%= @gg.content %></textarea>
+			<button class="button1 bg-dark" type="submit">Submit</button>
+			<a href="/"><input class="button1 bg-dark" type="button" value="Cancel"></a>
+		</form>
+		<% else %>
+		<%= @gg.title.upcase %>
 		<br>
-		<textarea class="txtarea" cols="40" rows="3" maxlength="100" name="question[title]"><%= @gg.title %></textarea>
+		<div class="pye3">"<%= @gg.content %>"</div>
 		<br>
-		<textarea class="txtarea" cols="40" rows="10" name="question[content]"><%= @gg.content %></textarea>
-		<button class="button1 bg-dark" type="submit">Submit</button>
-		<a href="/"><input class="button1 bg-dark" type="button" value="Cancel"></a>
-	</form>
-	<% else %>
-	<%= @gg.title.upcase %>
-	<br>
-	<div class="pye3">"<%= @gg.content %>"</div>
-	<br>
-	<form action="/edit" method="post">
-		<textarea class="txtarea" name="ans[content]" cols="40" rows="10"><%= @gb.content %></textarea>
-		<br>
-		<button class="button1 bg-dark" type="submit">Submit</button>
-		<a href="/"><input class="button1 bg-dark" type="button" value="Cancel"></a>
-	</form>
-	<% end %>
+		<form action="/edit" method="post">
+			<textarea class="txtarea" name="ans[content]" cols="40" rows="10"><%= @gb.content %></textarea>
+			<br>
+			<button class="button1 bg-dark" type="submit">Submit</button>
+			<a href="/"><input class="button1 bg-dark" type="button" value="Cancel"></a>
+		</form>
+		<% end %>
 	</div>
 </div>
 <br><br>

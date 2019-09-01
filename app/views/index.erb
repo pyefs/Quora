@@ -1,16 +1,18 @@
 <i>* "<font color="red"><b>√</b></font>" marks a question that has been answered.</i>
 <br>
 <% @questions.find_each do |q| %>
-	<div class="bg-dark">
-		<font color="gold"> [ <%= q.category %> ] </font>
-		<font color="silver" size="1.0rem">Posted on <%= q.created_at %></font>
-	</div>
-	<b>[ID]     <%= q.title %></b><br>
-	[#<%= q.id %>]     <%= q.content[0,60] %><% if q.content.length >= 60 %>...<% end %>
-	<% if Ans.find_by(id: q.id) != nil %>
-	<font color="red"><b>√</b></font>
-	<% end %>
-	<a href="/view?id=<%= q.id %>"><button class="button" type="submit">View</button></a>
-	<br><br>
+<div class="bg-dark">
+	<font color="gold"> [ <%= q.category %> ] </font>
+	<font color="silver" size="1.0rem">Posted on <%= q.created_at %></font>
+</div>
+<b>[ID]     <%= q.title %></b>
+<br>
+[#<%= q.id %>]     <%= q.content[0,60] %><% if q.content.length >= 60 %>...
+<% end %>
+<% if Ans.find_by(id: q.id) != nil %>
+<font color="red"><b>√</b></font>
+<% end %>
+<a href="/view?id=<%= q.id %>"><button class="button" type="submit">View</button></a>
+<br><br>
 <% end %>
 <br><br>

@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
   enable :sessions
 
   get '/' do
-  	@questions = Questions.all
+    @questions = Questions.all
     erb :index
   end
 
@@ -81,8 +81,6 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/edit' do
-    puts session['cat']
-    puts session['id']
     if session['cat'] == "question"
       @update_db = Questions.find(session['id'].to_i)
       @udb = @update_db.update(params[:question])

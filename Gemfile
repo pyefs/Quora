@@ -7,6 +7,7 @@ gem 'rake'
 gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
+gem 'shotgun'
 
 group :development do
   gem 'sinatra-contrib'

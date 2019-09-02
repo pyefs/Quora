@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/questions' do
-  	@question = Questions.new()
+    @question = Questions.new()
     ff = 1
     @qd = Questions.count + 1
     until Questions.find_by(id: @qd) == nil
@@ -21,12 +21,12 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/questions' do
-  	@question = Questions.new(params[:question])
-  	if @question.save
-  		redirect to('/')
-  	else
-  		erb :questions
-  	end
+    @question = Questions.new(params[:question])
+    if @question.save
+      redirect to('/')
+    else
+      erb :questions
+    end
   end
 
   get '/delete' do

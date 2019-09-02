@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
   post '/questions' do
     @question = Questions.new(params[:question])
     if @question.save
-      redirect to('/')
+      redirect "/view?id=#{@question.id}"
     else
       erb :questions
     end
